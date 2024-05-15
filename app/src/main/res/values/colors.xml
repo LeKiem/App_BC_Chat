@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#F41F1F</color>
+    <color name="primary_dark">#142232</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="input_background">#ececec</color>
+    <color name="icon_background">#20ffffff</color>
+    <color name="error">#b00020</color>
+    <color name="received_mess_bg">#090d16</color>
+    <color name="green">#169955</color>
+    <color name="lightGrey">#efefef</color>
+    <color name="grey">#d2d2d2</color>
+    <color name="draGrey">#616161</color>
+    <color name="primaryColor">#F41F1F</color>
+    <color name="colorGray00">#f5f0f0</color>
+    <color name="colorGray01">#c9c9c9</color>
+    <color name="colorGray02">#959595</color>
+    <color name="red">#FF1100</color>
+    <color name="colorRed">#FF0000</color>
+</resources>

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "315124157127",
+    "firebase_url": "https://baochay-76cd5-default-rtdb.firebaseio.com",
+    "project_id": "baochay-76cd5",
+    "storage_bucket": "baochay-76cd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315124157127:android:57161fe6632ca89dff4ce2",
+        "android_client_info": {
+          "package_name": "hunre.it.app_bc_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIbxJuoLZmDe0JmUAMQROo23hpgGmZ6-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

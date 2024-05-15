@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App_BC"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".activies.User.InfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.Admin.CapNhatTT"
+            android:exported="false" />
+        <activity
+            android:name=".activies.Admin.CapNhatSP"
+            android:exported="false" />
+        <activity
+            android:name=".activies.Admin.HomeAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.UserInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.KNActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.TintucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.ChatMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.IntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activies.SignUpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activies.SingInActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activies.Splash"
+            android:exported="false" />
+        <activity
+            android:name=".activies.MainActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".firebase.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".firebase.MyFirebaseIdService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

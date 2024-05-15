@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".activies.Admin.CapNhatTT">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/hinhAnh"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_item_new_1"
+        app:riv_corner_radius="10dp" />
+    <EditText
+        android:id="@+id/tenTt"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/hinhAnh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiêu đề"
+        android:background="@drawable/shape_rect02"
+        android:inputType="textPersonName|textCapWords"
+        android:padding="12dp" />
+
+    <EditText
+        android:background="@drawable/shape_rect02"
+        android:id="@+id/moTa"
+        android:gravity="top|start"
+        android:layout_marginBottom="10dp"
+        android:drawableTint="@color/colorGray02"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/tenTt"
+        android:hint="Mô tả"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="12dp" />
+
+    <!--Whether or not product on discount-->
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/capNhat"
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moTa"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_btn_login"
+        android:text="Cập nhật"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
