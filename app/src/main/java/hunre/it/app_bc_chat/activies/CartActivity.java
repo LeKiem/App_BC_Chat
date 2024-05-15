@@ -54,7 +54,7 @@ public class CartActivity extends BaseActivity1 {
         double itemTotal = Math.round(managmentCart.getTotalFee() * 100) / 100;
 
         binding.totlaFeeTxt.setText(itemTotal + "00đ");
-        binding.taxTxt.setText( tax  + "00đ");
+        binding.taxTxt.setText( tax  + "000đ");
         binding.deliveryTxt.setText( delivery  + "00đ");
         binding.totalTxt.setText(total  + "00đ");
     }
