@@ -39,7 +39,7 @@ public class UserInfoActivity extends BaseActivity1 {
         binding.btnChat.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, ChatMainActivity.class)));
 
         binding.btnCart.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, CartActivity.class)));
-        binding.btnInfo.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, HomeAdminActivity.class)));
+        binding.btnInfo.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, InfoActivity.class)));
         binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.btnLogout.setOnClickListener(v -> signOut());
     }

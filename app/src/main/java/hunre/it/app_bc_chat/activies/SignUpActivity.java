@@ -112,6 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     }
+
 //    private  void signUp() {
 //        loading( true);
 //        FirebaseFirestore database = FirebaseFirestore.getInstance();
@@ -149,8 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
         return Base64.encodeToString(bytes, Base64.DEFAULT);
     }
 
-    private  final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
+    private  final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if(result.getResultCode() == RESULT_OK){
                     if(result.getData() != null) {

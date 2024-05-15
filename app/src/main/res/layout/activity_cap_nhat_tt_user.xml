@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activies.User.InfoActivity">
+    tools:context=".activies.User.CapNhatTtUser">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,6 @@
             android:gravity="center"
             android:background="@drawable/top_bg"
             android:orientation="horizontal"
-
             >
             <ImageView
                 android:id="@+id/btnBack"
@@ -29,7 +28,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/back" />
-
             <EditText
                 android:id="@+id/editTextText"
                 android:layout_width="wrap_content"
@@ -42,12 +40,10 @@
                 android:drawablePadding="8dp"
                 android:ems="10"
                 android:hint="Tìm kiếm nhanh..."
+                android:visibility="invisible"
                 android:inputType="text"
+
                 android:padding="8dp" />
-
-
-
-
 
         </LinearLayout>
 
@@ -66,7 +62,8 @@
                 <TextView
                     android:id="@+id/txtName"
                     android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+
                     android:text="Họ tên: "
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -75,16 +72,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/titleName"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:text="Lê Văn Kiệm"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:background="@drawable/shape_rect02"
+                    android:hint="Họ và tên"
+                    android:padding="@dimen/_10sdp"
+                    android:inputType="textPersonName|textCapWords"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/txtName"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,9 +104,8 @@
                 <TextView
                     android:id="@+id/textSex"
                     android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Email:"
-
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -115,16 +113,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/titleEmail"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:background="@drawable/shape_rect02"
+                    android:hint="Email"
+                    android:padding="@dimen/_10sdp"
+                    android:inputType="textPersonName|textCapWords"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/textSex"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -145,7 +145,7 @@
                 <TextView
                     android:id="@+id/txtBirth"
                     android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Địa chỉ:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -153,17 +153,18 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/titleDc"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextDiaChi"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:text="Hà Nam"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:background="@drawable/shape_rect02"
+                    android:hint="Địa chỉ"
+                    android:padding="@dimen/_10sdp"
+                    android:inputType="textPersonName|textCapWords"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/txtBirth"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -184,7 +185,7 @@
                 <TextView
                     android:id="@+id/txtCC"
                     android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Số điện thoại:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -192,26 +193,28 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/titleSdt"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextSdt"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:text="0987789879879"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:background="@drawable/shape_rect02"
+                    android:hint="0987789879879"
+                    android:inputType="textPersonName|textCapWords"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:padding="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/txtCC"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnUpdateInfo"
+            android:id="@+id/btnSave"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -219,7 +222,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/green_btn_bg"
-            android:text="Cập nhật thông tin"
+            android:text="Cập nhật "
             android:textColor="@color/white"
             android:textSize="22dp"
             android:textStyle="bold" />

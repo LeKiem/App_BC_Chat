@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_BC"
         tools:targetApi="31">
-
+        <activity
+            android:name=".activies.User.CapNhatTtUser"
+            android:exported="false"
+           />
         <activity
             android:name=".activies.User.InfoActivity"
             android:exported="false" />
@@ -69,7 +72,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activies.SingInActivity"
+            android:name=".activies.Splash"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -79,8 +82,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activies.Splash"
-            android:exported="false" />
+            android:name=".activies.SingInActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activies.MainActivity"
             android:exported="false" />
