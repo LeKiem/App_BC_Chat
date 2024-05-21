@@ -16,11 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -49,27 +52,58 @@ import retrofit2.Response;
 public class MainActivity extends BaseActivity1 {
     private PreferenceManager preferenceManager;
     private ActivityMainBinding binding;
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
+        db = FirebaseFirestore.getInstance();
         initBanner();
 //        initCategory();
         initPopular();
         initLike();
         bottomNavigate();
-//        loadUserDetails();
+        loadUserDetails();
         getToken();
 
     }
 
 
-    private  void loadUserDetails(){
+    private  void loadUserDetails1(){
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        binding.imageProfile.setImageBitmap(bitmap);
+        binding.avatar.setImageBitmap(bitmap);
+    }
+    private void loadUserDetails() {
+        String userId = preferenceManager.getString(Constants.KEY_USER_ID);
+
+        db.collection(Constants.KEY_COLLECTION_USERS)
+                .document(userId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String name = documentSnapshot.getString(Constants.KEY_NAME);
+                            String diaChi = documentSnapshot.getString(Constants.DiaChi);
+                            binding.tenKH.setText(name);
+                            binding.diaChi.setText(diaChi);
+                            byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                            binding.avatar.setImageBitmap(bitmap);
+                        } else {
+                            // Xử lý trường hợp không tìm thấy thông tin người dùng
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Xử lý lỗi khi truy xuất dữ liệu không thành công
+                    }
+                });
     }
     private  void getToken(){
         FirebaseMessaging.getInstance().getToken().addOnSuccessListener(this::updateToken);
