@@ -1,6 +1,8 @@
 package hunre.it.app_bc_chat.Domain;
 
-public class TinTucDomain {
+import java.io.Serializable;
+
+public class TinTucDomain implements Serializable {
     private String maTt;
     private String tenTT, moTa, hinhAnh, timestamp, uid;
 

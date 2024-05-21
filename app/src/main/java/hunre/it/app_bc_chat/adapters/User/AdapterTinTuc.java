@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 import hunre.it.app_bc_chat.Domain.TinTucDomain;
 import hunre.it.app_bc_chat.activies.DetailActivity;
+import hunre.it.app_bc_chat.activies.User.DetailTinTucActivity;
+import hunre.it.app_bc_chat.adapters.PopularAdapter;
 import hunre.it.app_bc_chat.databinding.ViewholderPopListLikeBinding;
 
 public class AdapterTinTuc extends RecyclerView.Adapter<AdapterTinTuc.Viewholder> {
@@ -29,7 +31,7 @@ public class AdapterTinTuc extends RecyclerView.Adapter<AdapterTinTuc.Viewholder
 
     @NonNull
     @Override
-    public AdapterTinTuc.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         ViewholderPopListLikeBinding binding = ViewholderPopListLikeBinding.inflate(
                 LayoutInflater.from(context), parent, false
@@ -38,22 +40,33 @@ public class AdapterTinTuc extends RecyclerView.Adapter<AdapterTinTuc.Viewholder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterTinTuc.Viewholder holder, int position) {
-        TinTucDomain item = items.get(position);
-        holder.binding.title.setText(item.getTenTT());
+    public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+//        TinTucDomain item = items.get(position);
+//        holder.binding.title.setText(items.getTenTT());
+        holder.binding.title.setText(items.get(position).getTenTT());
 
-        RequestOptions requestOptions = new RequestOptions().transform(new CenterCrop());
-
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions=requestOptions.transform(new CenterCrop());
         Glide.with(context)
-                .load(item.getHinhAnh())
+                .load(items.get(position).getHinhAnh())
                 .apply(requestOptions)
                 .into(holder.binding.pic);
-
-//        holder.itemView.setOnClickListener(v -> {
-//            Intent intent = new Intent(context, DetailActivity.class);
-//            intent.putExtra("object", String.valueOf(item));
-//            context.startActivity(intent);
-//        });
+//        Glide.with(context)
+//                .load(items.get(position).getHinhAnh())
+//                .apply(requestOptions)
+//                .into(holder.binding.pic);
+//        Glide.with(context)
+//                .load(items.get(position).getPicUrl())
+//                .apply(requestOptions)
+//                .into(holder.binding.pic);
+        holder.itemView.setOnClickListener(new  View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailTinTucActivity.class);
+                intent.putExtra("object", items.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -61,8 +74,9 @@ public class AdapterTinTuc extends RecyclerView.Adapter<AdapterTinTuc.Viewholder
         return items.size();
     }
 
-    public static class Viewholder extends RecyclerView.ViewHolder {
-        final ViewholderPopListLikeBinding binding;
+//    public static class Viewholder extends RecyclerView.ViewHolder {
+        public class Viewholder extends RecyclerView.ViewHolder{
+         ViewholderPopListLikeBinding binding;
 
         public Viewholder(ViewholderPopListLikeBinding binding) {
             super(binding.getRoot());

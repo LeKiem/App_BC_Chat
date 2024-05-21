@@ -111,7 +111,29 @@ public class MainActivity extends BaseActivity1 {
             }
         });
     }
-
+    private void initPopular() {
+        DatabaseReference myRef = database.getReference("SanPham");
+        binding.progressBarPopular.setVisibility(View.VISIBLE);
+        ArrayList<SanPhamUser> items = new ArrayList<>();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        items.add(issue.getValue(SanPhamUser.class));
+                    }
+                    if (!items.isEmpty()) {
+                        binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                        binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
+                    }
+                    binding.progressBarPopular.setVisibility(View.GONE);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
     private void bottomNavigate() {
         binding.tintucBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TintucActivity.class)));
         binding.KNBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, KNActivity.class)));
@@ -207,29 +229,7 @@ public class MainActivity extends BaseActivity1 {
 //            }
 //        });
 //    }
-private void initPopular() {
-    DatabaseReference myRef = database.getReference("SanPham");
-    binding.progressBarPopular.setVisibility(View.VISIBLE);
-    ArrayList<SanPhamUser> items = new ArrayList<>();
-    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if (snapshot.exists()) {
-                for (DataSnapshot issue : snapshot.getChildren()) {
-                    items.add(issue.getValue(SanPhamUser.class));
-                }
-                if (!items.isEmpty()) {
-                    binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
-                    binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
-                }
-                binding.progressBarPopular.setVisibility(View.GONE);
-            }
-        }
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-        }
-    });
-}
+
 
 //    private void initCategory() {
 //        DatabaseReference myRef = database.getReference("Category");

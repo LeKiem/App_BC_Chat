@@ -35,7 +35,7 @@ public class DescriptionFragment extends Fragment {
         TextView desTxt = view.findViewById(R.id.desTxt);
 
         if (getArguments() != null) {
-            String description = getArguments().getString("description", "1");
+            String description = getArguments().getString("moTa", "1");
             desTxt.setText(description);
         }
     }
