@@ -51,42 +51,65 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.appbar.AppBarLayout
-                    android:id="@+id/toolbar"
+                <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                    android:id="@+id/menu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/colorGray00"
+                    android:elevation="10dp"
+                    android:padding="10dp"
+                    app:cnb_addBottomInset="false"
+                    app:cnb_addLeftInset="false"
+                    app:cnb_addRightInset="false"
+                    app:cnb_addTopInset="false"
+                    app:cnb_animationDuration="175"
+                    app:cnb_iconSize="28dp"
+                    app:cnb_menuResource="@menu/menu1"
+                    app:cnb_orientationMode="horizontal"
+                    app:cnb_radius="15dp" />
+
+<!--                <com.google.android.material.appbar.AppBarLayout-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
 
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tabLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        app:tabBackground="@color/white"
-                        app:tabGravity="fill"
-                        app:tabIndicatorColor="@color/green"
-                        app:tabIndicatorHeight="3dp"
-                        app:tabMaxWidth="0dp"
-                        app:tabMode="fixed"
-                        app:tabSelectedTextColor="@color/green"
-                        app:tabTextAppearance="@style/tab_layout"
-                        app:tabTextColor="@color/black">
+<!--                    <com.google.android.material.tabs.TabLayout-->
+<!--                        android:id="@+id/tabLayout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="0dp"-->
+<!--                        app:tabBackground="@color/white"-->
+<!--                        app:tabGravity="fill"-->
+<!--                        app:tabIndicatorColor="@color/green"-->
+<!--                        app:tabIndicatorHeight="3dp"-->
+<!--                        app:tabMaxWidth="0dp"-->
+<!--                        app:tabMode="fixed"-->
+<!--                        app:tabSelectedTextColor="@color/green"-->
+<!--                        app:tabTextAppearance="@style/tab_layout"-->
+<!--                        app:tabTextColor="@color/black">-->
 
-                    </com.google.android.material.tabs.TabLayout>
+<!--                    </com.google.android.material.tabs.TabLayout>-->
 
-                    <View
-                        android:id="@+id/view2"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#d8d8d8" />
-                </com.google.android.material.appbar.AppBarLayout>
+<!--                    <View-->
+<!--                        android:id="@+id/view2"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:background="#d8d8d8" />-->
+<!--                </com.google.android.material.appbar.AppBarLayout>-->
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewpage2"
+<!--                <androidx.viewpager.widget.ViewPager-->
+<!--                    android:id="@+id/viewpage2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="600dp"-->
+<!--                    android:background="@color/white" />-->
+                <androidx.viewpager2.widget.ViewPager2
                     android:layout_width="match_parent"
                     android:layout_height="600dp"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    android:id="@+id/container"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

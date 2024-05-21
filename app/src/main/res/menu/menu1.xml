@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/kncc"
+        android:icon="@drawable/danger2"
+        android:title="Kĩ năng chữa cháy"
+        app:cnb_backgroundColor="#4DC2185B"
+        app:cnb_iconColor="#C2185B"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#C2185B"/>
+    <item
+        android:id="@+id/knpc"
+        android:icon="@drawable/fire2"
+        android:title="Kĩ năng phòng cháy"
+        app:cnb_backgroundColor="#6AA8982D"
+        app:cnb_iconColor="#F44C36"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#FF0000"/>
+    <item
+        android:id="@+id/kntn"
+        android:icon="@drawable/exit2"
+        android:title="Kĩ năng thoát nạn"
+        app:cnb_backgroundColor="#4D00897B"
+        app:cnb_iconColor="#00897B"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#00897B"/>
+</menu>

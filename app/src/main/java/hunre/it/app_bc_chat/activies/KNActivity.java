@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +13,20 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import hunre.it.app_bc_chat.Fragment.Admin.QLSanPham;
+import hunre.it.app_bc_chat.Fragment.Admin.QlTinTuc;
+import hunre.it.app_bc_chat.Fragment.Admin.ThongTinQuan;
 import hunre.it.app_bc_chat.Fragment.KnccFragment;
 import hunre.it.app_bc_chat.Fragment.KnpcFragment;
 import hunre.it.app_bc_chat.Fragment.KntnFragment;
 import hunre.it.app_bc_chat.R;
+import hunre.it.app_bc_chat.adapters.Admin.AdapterViewPager2;
 import hunre.it.app_bc_chat.databinding.ActivityKnactivityBinding;
 
 public class KNActivity extends  BaseActivity1 {
 
     ActivityKnactivityBinding binding;
+    private ArrayList<Fragment> fragments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +34,9 @@ public class KNActivity extends  BaseActivity1 {
         binding = ActivityKnactivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setupViewPager();
+//        setupViewPager();
         bottomNavigate();
+        loadFragments();
     }
 
     private void bottomNavigate() {
@@ -60,8 +67,50 @@ public class KNActivity extends  BaseActivity1 {
         adapter.addFrag(tab2, "KNCC");
         adapter.addFrag(tab3, "KCTN");
 
-        binding.viewpage2.setAdapter(adapter);
-        binding.tabLayout.setupWithViewPager(binding.viewpage2);
+//        binding.viewpage2.setAdapter(adapter);
+//        binding.tabLayout.setupWithViewPager(binding.viewpage2);
+    }
+    private void loadFragments() {
+
+        // nạp fragment vào viewpager tại activity hiện hành
+        fragments.add(new KnccFragment());
+        fragments.add(new KnpcFragment());
+        fragments.add(new KntnFragment());
+        AdapterViewPager2 adapterViewPager2 = new AdapterViewPager2(this, fragments);
+        binding.container.setAdapter(adapterViewPager2);
+        // nút button navigation sẽ thay đổi theo trang
+        binding.container.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        binding.menu.setItemSelected(R.id.kncc, true);
+                        break;
+                    case 1:
+                        binding.menu.setItemSelected(R.id.knpc, true);
+                        break;
+                    case 2:
+                        binding.menu.setItemSelected(R.id.kntn, true);
+                        break;
+                }
+                super.onPageSelected(position);
+            }
+        });
+        // nạp viewpager2 vào bottom navigation
+        binding.menu.setOnItemSelectedListener(i -> {
+            switch (i) {
+                case R.id.kncc:
+                    binding.container.setCurrentItem(0);
+                    break;
+                case R.id.knpc:
+                    binding.container.setCurrentItem(1);
+                    break;
+                case R.id.kntn:
+                    binding.container.setCurrentItem(2);
+                    break;
+            }
+        });
+
     }
     private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
