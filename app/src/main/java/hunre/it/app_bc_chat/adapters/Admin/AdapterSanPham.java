@@ -105,6 +105,7 @@ public class AdapterSanPham extends RecyclerView.Adapter<AdapterSanPham.HolderSa
             dialogMonAn(id, modelSanPham);
         });
 
+
     }
 
     double giaTien = 0, tongGiaTienSanPham = 0;

@@ -1,37 +1,38 @@
 package hunre.it.app_bc_chat.activies;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import hunre.it.app_bc_chat.Domain.ItemsDomain;
+import hunre.it.app_bc_chat.Domain.SanPhamUser;
 import hunre.it.app_bc_chat.Domain.SliderItems;
 import hunre.it.app_bc_chat.Fragment.DescriptionFragment;
 import hunre.it.app_bc_chat.Fragment.ReviewFragment;
 import hunre.it.app_bc_chat.Helper.ManagmentCart;
 import hunre.it.app_bc_chat.R;
-import hunre.it.app_bc_chat.adapters.SizeAdapter;
 import hunre.it.app_bc_chat.adapters.SliderAdapter;
 import hunre.it.app_bc_chat.databinding.ActivityDetailBinding;
+import p32929.androideasysql_library.Column;
+import p32929.androideasysql_library.EasyDB;
 
-public class DetailActivity extends BaseActivity1 {
+public class DetailActivity extends AppCompatActivity {
 
     ActivityDetailBinding binding;
-
-    private ItemsDomain object;
+    private SanPhamUser object;
     private  int numberOrder =1;
     private ManagmentCart managmentCart;
-    private Handler slideHandle = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +40,15 @@ public class DetailActivity extends BaseActivity1 {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        managmentCart= new ManagmentCart(this);
+        managmentCart = new ManagmentCart(this);
         getBundles();
-        initBanners();
-//        initSize();
         setupViewPager();
+        initBanners();
     }
-
-    private void initSize() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("S");
-        list.add("M");
-        list.add("L");
-        list.add("XL");
-        list.add("XXl");
-
-        binding.recylerSize.setAdapter(new SizeAdapter(list));
-        binding.recylerSize.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-    }
-    private void initBanners() {
+        private void initBanners() {
         ArrayList<SliderItems> sliderItems = new ArrayList<>();
-        for (int i = 0; i < object.getPicUrl().size(); i++){
-            sliderItems.add(new SliderItems(object.getPicUrl().get(i)));
+        for (int i = 0; i < object.getPicUrl().length(); i++){
+            sliderItems.add(new SliderItems(object.getPicUrl()));
         }
 
         binding.viewpagerSlider.setAdapter(new SliderAdapter(sliderItems, binding.viewpagerSlider));
@@ -70,49 +58,50 @@ public class DetailActivity extends BaseActivity1 {
         binding.viewpagerSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
     }
     private void getBundles() {
-        object=(ItemsDomain) getIntent().getSerializableExtra("object");
-        binding.titleTxt.setText(object.getTitle());
-        binding.priceTxt.setText(object.getPrice() +"00đ");
-        binding.ratingBar.setRating((float) object.getRating());
-        binding.ratingTxt.setText(object.getRating()+"Sao");
+        object = (SanPhamUser) getIntent().getSerializableExtra("object");
+        if (object != null) {
+            binding.titleTxt.setText(object.getTitle());
+            binding.priceTxt.setText(object.getGiaGoc() + "00đ");
 
-        binding.addToCartBtn.setOnClickListener(v -> {
-            object.setNumberinCart(numberOrder);
-            managmentCart.insertItem(object);
-        });
-        binding.btnBack.setOnClickListener(v -> finish());
+            binding.btnBack.setOnClickListener(v -> finish());
+            binding.btnCart.setOnClickListener(v -> {
+                Intent intent = new Intent(DetailActivity.this, CartActivity.class);
+                startActivity(intent);
+            });
+            binding.addToCartBtn.setOnClickListener(v -> {
+                object.setNumberinCart(numberOrder);
+                managmentCart.insertItem(object);
+            });
+        }
     }
 
-    private  void setupViewPager(){
+    private void setupViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         DescriptionFragment tab1 = new DescriptionFragment();
         ReviewFragment tab2 = new ReviewFragment();
-//        KnpcFragment tab3 = new KnpcFragment();
-//        SoldFragment tab4 = new SoldFragment();
 
         Bundle bundle1 = new Bundle();
-        Bundle bundle2 = new Bundle();
-
-        bundle1.putString("description", object.getDescription());
-
+        if (object != null) {
+            bundle1.putString("description", object.getDescription());
+        }
         tab1.setArguments(bundle1);
-        tab2.setArguments(bundle2);
 
-
-        adapter.addFrag(tab1, "Mô tả sản phầm");
-        adapter.addFrag(tab2, "Đánh giá ");
-
+        adapter.addFrag(tab1, "Mô tả sản phẩm");
+        adapter.addFrag(tab2, "Đánh giá");
 
         binding.viewpage.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewpage);
     }
+
+
+
     private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
-        private  final List<String> mFragmentTitleList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(@NonNull FragmentManager fm) {
-            super(fm);
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
 
         @NonNull
@@ -125,13 +114,15 @@ public class DetailActivity extends BaseActivity1 {
         public int getCount() {
             return mFragmentList.size();
         }
-        private void  addFrag(Fragment fragment, String title){
+
+        private void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
+
         @Override
-        public  CharSequence getPageTitle (int position){
-            return  mFragmentTitleList.get(position);
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
 }

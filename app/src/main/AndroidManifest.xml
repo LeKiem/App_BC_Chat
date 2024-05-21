@@ -22,9 +22,11 @@
         android:theme="@style/Theme.App_BC"
         tools:targetApi="31">
         <activity
+            android:name=".activies.User.DetailTinTucActivity"
+            android:exported="false" />
+        <activity
             android:name=".activies.User.CapNhatTtUser"
-            android:exported="false"
-           />
+            android:exported="false" />
         <activity
             android:name=".activies.User.InfoActivity"
             android:exported="false" />

@@ -20,12 +20,10 @@ public class DescriptionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_description, container, false);
     }
@@ -33,8 +31,12 @@ public class DescriptionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView desTxt = view.findViewById(R.id.desTxt);
-        desTxt.setText(getArguments().getString("description",""));
 
+        TextView desTxt = view.findViewById(R.id.desTxt);
+
+        if (getArguments() != null) {
+            String description = getArguments().getString("description", "1");
+            desTxt.setText(description);
+        }
     }
 }

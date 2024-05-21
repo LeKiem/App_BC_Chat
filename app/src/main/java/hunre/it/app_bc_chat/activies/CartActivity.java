@@ -10,10 +10,11 @@ import hunre.it.app_bc_chat.Helper.ManagmentCart;
 import hunre.it.app_bc_chat.R;
 import hunre.it.app_bc_chat.adapters.CartAdapter;
 import hunre.it.app_bc_chat.databinding.ActivityCartBinding;
-
+import p32929.androideasysql_library.Column;
+import p32929.androideasysql_library.EasyDB;
 public class CartActivity extends BaseActivity1 {
     ActivityCartBinding binding;
-
+    private EasyDB easyDB;
     private double tax;
     private ManagmentCart managmentCart;
 

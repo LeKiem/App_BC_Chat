@@ -8,11 +8,14 @@ import android.widget.Filter;
 import java.util.ArrayList;
 
 import hunre.it.app_bc_chat.adapters.Admin.AdapterSanPham;
+import hunre.it.app_bc_chat.adapters.PopularAdapter;
 import hunre.it.app_bc_chat.models.SanPham;
 
 public class TimKiem extends Filter {
 
     private final AdapterSanPham adapter;
+
+
     private final ArrayList<SanPham> sanPhams;
 
     public TimKiem(AdapterSanPham adapter, ArrayList<SanPham> filterList) {

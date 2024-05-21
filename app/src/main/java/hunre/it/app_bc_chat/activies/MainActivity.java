@@ -1,21 +1,17 @@
 package hunre.it.app_bc_chat.activies;
 
-import android.content.Context;
 import android.content.Intent;
 
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
@@ -34,20 +30,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 
-import hunre.it.app_bc_chat.Domain.ItemsDomain;
-import hunre.it.app_bc_chat.Domain.LikesDomain;
+import hunre.it.app_bc_chat.Domain.SanPhamUser;
 import hunre.it.app_bc_chat.Domain.SliderItems;
-import hunre.it.app_bc_chat.R;
-import hunre.it.app_bc_chat.adapters.LikeAdapter;
+import hunre.it.app_bc_chat.Domain.TinTucDomain;
 import hunre.it.app_bc_chat.adapters.PopularAdapter;
-import hunre.it.app_bc_chat.adapters.RecentConversationsAdapter;
 import hunre.it.app_bc_chat.adapters.SliderAdapter;
+import hunre.it.app_bc_chat.adapters.User.AdapterTinTuc;
 import hunre.it.app_bc_chat.databinding.ActivityMainBinding;
-import hunre.it.app_bc_chat.databinding.ActivitySingInBinding;
 import hunre.it.app_bc_chat.network.ApiClient;
 import hunre.it.app_bc_chat.network.ApiService;
 import hunre.it.app_bc_chat.utilities.Constants;
@@ -95,21 +85,20 @@ public class MainActivity extends BaseActivity1 {
                 .addOnFailureListener(e -> showToast("Unable to update token"));
     }
     private void initLike() {
-        DatabaseReference myRef = database.getReference("Likes");
+        DatabaseReference myRef = database.getReference("TinTuc");
         binding.progressBarPopular.setVisibility(View.VISIBLE);
-        ArrayList<LikesDomain> likes =  new ArrayList<>();
-
+        ArrayList<TinTucDomain> likes =  new ArrayList<>();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot issue : snapshot.getChildren()) {
-                        likes.add(issue.getValue(LikesDomain.class));
+                        likes.add(issue.getValue(TinTucDomain.class));
                     }
 
                     if (!likes.isEmpty()) {
                         binding.recyclerViewOfficial.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
-                        binding.recyclerViewOfficial.setAdapter(new LikeAdapter(likes));
+                        binding.recyclerViewOfficial.setAdapter(new AdapterTinTuc(likes));
                     }
                     binding.progressBarOfficial.setVisibility(View.GONE);
                 }
@@ -131,20 +120,7 @@ public class MainActivity extends BaseActivity1 {
             sendNoti();
         });
     }
-    private void sendTopic(){
-//        FirebaseMessaging.getInstance().subscribeToTopic("all");
-        FirebaseMessaging.getInstance().subscribeToTopic("noti")
-                .addOnCompleteListener(task -> {
-                    String msg = "Subscribed noti";
-                    if (!task.isSuccessful()) {
-                        msg = "Subscribe failed";
-                    }
-//                        Log.d(Tag, msg);
-                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                });
-    }
     private void sendNoti(){
-
         try {
             JSONObject data  = new JSONObject();
             data.put(Constants.KEY_USER_ID, "id");
@@ -165,8 +141,6 @@ public class MainActivity extends BaseActivity1 {
 //        binding.inputMessage.setText(null);
     }
     public void sendNotificationToAllUsers(String messageBody) {
-
-
         ApiClient.getClient()
                 .create(ApiService.class)
                 .sendMessage(Constants.getRemoteMsgHeaders(), messageBody)
@@ -179,14 +153,11 @@ public class MainActivity extends BaseActivity1 {
                             handleErrorResponse(response);
                         }
                     }
-
                     @Override
                     public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
                         showToast(t.getMessage());
                     }
                 });
-
-
     }
     private void handleSuccessResponse(Response<String> response) {
         try {
@@ -213,35 +184,52 @@ public class MainActivity extends BaseActivity1 {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    private void initPopular() {
-        DatabaseReference myRef = database.getReference("Items");
-        binding.progressBarPopular.setVisibility(View.VISIBLE);
-        ArrayList<ItemsDomain> items = new ArrayList<>();
-
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
-                    }
-
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
-                        binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
-                    }
-                    binding.progressBarPopular.setVisibility(View.GONE);
+//    private void initPopular() {
+//        DatabaseReference myRef = database.getReference("Items");
+//        binding.progressBarPopular.setVisibility(View.VISIBLE);
+//        ArrayList<ItemsDomain> items = new ArrayList<>();
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        items.add(issue.getValue(ItemsDomain.class));
+//                    }
+//                    if (!items.isEmpty()) {
+//                        binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+//                        binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
+//                    }
+//                    binding.progressBarPopular.setVisibility(View.GONE);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
+private void initPopular() {
+    DatabaseReference myRef = database.getReference("SanPham");
+    binding.progressBarPopular.setVisibility(View.VISIBLE);
+    ArrayList<SanPhamUser> items = new ArrayList<>();
+    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            if (snapshot.exists()) {
+                for (DataSnapshot issue : snapshot.getChildren()) {
+                    items.add(issue.getValue(SanPhamUser.class));
                 }
+                if (!items.isEmpty()) {
+                    binding.recyclerViewPopular.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                    binding.recyclerViewPopular.setAdapter(new PopularAdapter(items));
+                }
+                binding.progressBarPopular.setVisibility(View.GONE);
             }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-
-            }
-        });
-    }
+        }
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+        }
+    });
+}
 
 //    private void initCategory() {
 //        DatabaseReference myRef = database.getReference("Category");

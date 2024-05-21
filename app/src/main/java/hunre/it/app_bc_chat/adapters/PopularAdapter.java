@@ -18,14 +18,16 @@ import java.util.ArrayList;
 
 
 import hunre.it.app_bc_chat.Domain.ItemsDomain;
+import hunre.it.app_bc_chat.Domain.SanPhamUser;
 import hunre.it.app_bc_chat.activies.DetailActivity;
 import hunre.it.app_bc_chat.databinding.ViewholderPopListBinding;
+import hunre.it.app_bc_chat.models.SanPham;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewholder> {
-    ArrayList<ItemsDomain> items;
+    ArrayList<SanPhamUser> items;
     Context context;
 
-    public PopularAdapter(ArrayList<ItemsDomain> items) {
+    public PopularAdapter(ArrayList<SanPhamUser> items) {
         this.items = items;
     }
 
@@ -38,21 +40,22 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
         return new Viewholder(binding);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.binding.title.setText(items.get(position).getTitle());
-        holder.binding.reviewTxt.setText(""+items.get(position).getReview());
-        holder.binding.priceTxt.setText(items.get(position).getPrice()+"00đ");
-        holder.binding.ratingTxt.setText("("+items.get(position).getRating()+")");
-        holder.binding.oldPriceTxt.setText(items.get(position).getOldPrice()+"00đ");
-        holder.binding.oldPriceTxt.setPaintFlags(holder.binding.oldPriceTxt.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.binding.ratingBar.setRating((float) items.get(position).getRating());
+        holder.binding.priceTxt.setText(items.get(position).getGiaGiam()+".000đ");
+        holder.binding.tiLe.setText(" - "+items.get(position).getTiLeGiam()+ "% ");
+        holder.binding.desTxt.setText(" - "+items.get(position).getDescription()+ "% ");
+//        holder.binding.oldPriceTxt.setText(items.get(position).getGiaGoc()+".000đ");
+//        holder.binding.oldPriceTxt.setPaintFlags(holder.binding.oldPriceTxt.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+//        holder.binding.ratingBar.setRating((float) items.get(position).getRating());
 
         RequestOptions requestOptions = new RequestOptions();
         requestOptions=requestOptions.transform(new CenterCrop());
 
         Glide.with(context)
-                .load(items.get(position).getPicUrl().get(0))
+                .load(items.get(position).getPicUrl())
                 .apply(requestOptions)
                 .into(holder.binding.pic);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +66,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
                 context.startActivity(intent);
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return items.size();

@@ -1,7 +1,6 @@
 package hunre.it.app_bc_chat.activies;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
@@ -15,8 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import hunre.it.app_bc_chat.Domain.NewDomain;
-import hunre.it.app_bc_chat.adapters.NewAdapter;
+import hunre.it.app_bc_chat.Domain.TinTucDomain;
+import hunre.it.app_bc_chat.adapters.User.AdapterTinTucPage1;
 import hunre.it.app_bc_chat.databinding.ActivityTintucBinding;
 
 public class TintucActivity extends BaseActivity1 {
@@ -40,21 +39,21 @@ public class TintucActivity extends BaseActivity1 {
         binding.btnBack.setOnClickListener(v -> onBackPressed());
     }
     private void initLike() {
-        DatabaseReference myRef = database.getReference("New");
+        DatabaseReference myRef = database.getReference("TinTuc");
         binding.progressBarNew.setVisibility(View.VISIBLE);
-        ArrayList<NewDomain> news =  new ArrayList<>();
+        ArrayList<TinTucDomain> news =  new ArrayList<>();
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot issue : snapshot.getChildren()) {
-                        news.add(issue.getValue(NewDomain.class));
+                        news.add(issue.getValue(TinTucDomain.class));
                     }
 
                     if (!news.isEmpty()) {
                         binding.recyclerViewNew.setLayoutManager(new GridLayoutManager(TintucActivity.this,1));
-                        binding.recyclerViewNew.setAdapter(new NewAdapter(news));
+                        binding.recyclerViewNew.setAdapter(new AdapterTinTucPage1(news));
                     }
                     binding.progressBarNew.setVisibility(View.GONE);
                 }

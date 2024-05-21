@@ -16,6 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tiLe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/shape_rect05"
+        android:padding="5dp"
+        android:text="-10%"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
@@ -58,28 +73,24 @@
         app:layout_constraintTop_toBottomOf="@+id/pic" />
 
     <TextView
-        android:id="@+id/oldPriceTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="123d"
-        android:textColor="@color/draGrey"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
         android:id="@+id/priceTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="123d"
         android:textColor="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/oldPriceTxt"
-        app:layout_constraintStart_toEndOf="@+id/oldPriceTxt"
-        app:layout_constraintTop_toTopOf="@+id/oldPriceTxt"
-        />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+    <TextView
+        android:id="@+id/desTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12ccccccccd"
+        android:visibility="invisible"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
     <TextView
         android:id="@+id/reviewTxt"
         android:layout_width="wrap_content"
