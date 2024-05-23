@@ -8,7 +8,32 @@ public class SanPhamUser implements Serializable {
     private int NumberinCart;
 
     private String maSp;
-    private String title, description, picUrl, giaGoc, giaGiam, tiLeGiam, coGiamGia, timestamp, uid, sl;
+    private String id_gioHang,  title, description, picUrl, giaGoc, giaGiam, tiLeGiam, coGiamGia, timestamp, uid, sl;
+    private int soLuongSP, tongGiaTienSP;
+
+    public String getId_gioHang() {
+        return id_gioHang;
+    }
+
+    public void setId_gioHang(String id_gioHang) {
+        this.id_gioHang = id_gioHang;
+    }
+
+    public int getSoLuongSP() {
+        return soLuongSP;
+    }
+
+    public void setSoLuongSP(int soLuongSP) {
+        this.soLuongSP = soLuongSP;
+    }
+
+    public int getTongGiaTienSP() {
+        return tongGiaTienSP;
+    }
+
+    public void setTongGiaTienSP(int tongGiaTienSP) {
+        this.tongGiaTienSP = tongGiaTienSP;
+    }
 
     public SanPhamUser() {
     }

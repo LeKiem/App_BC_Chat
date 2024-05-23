@@ -54,4 +54,7 @@ public class TinyDB {
         Type type = TypeToken.getParameterized(ArrayList.class, classType).getType();
         return gson.fromJson(json, type);
     }
+    public void remove(String key) {
+        preferences.edit().remove(key).apply();
+    }
 }

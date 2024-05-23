@@ -73,4 +73,9 @@ public class ManagmentCart {
         }
         return totalFee;
     }
+
+    public void clearCart() {
+        tinyDB.remove("CartList");
+        Toast.makeText(context, "Giỏ hàng đã được xóa", Toast.LENGTH_SHORT).show();
+    }
 }

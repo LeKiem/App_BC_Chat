@@ -6,12 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +17,9 @@ import hunre.it.app_bc_chat.Domain.SliderItems;
 import hunre.it.app_bc_chat.Fragment.DescriptionFragment;
 import hunre.it.app_bc_chat.Fragment.ReviewFragment;
 import hunre.it.app_bc_chat.Helper.ManagmentCart;
-import hunre.it.app_bc_chat.R;
+import hunre.it.app_bc_chat.activies.User.CartActivity;
 import hunre.it.app_bc_chat.adapters.SliderAdapter;
 import hunre.it.app_bc_chat.databinding.ActivityDetailBinding;
-import p32929.androideasysql_library.Column;
-import p32929.androideasysql_library.EasyDB;
 
 public class DetailActivity extends AppCompatActivity {
 

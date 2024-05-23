@@ -1,7 +1,6 @@
 package hunre.it.app_bc_chat.activies;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-import hunre.it.app_bc_chat.R;
-import hunre.it.app_bc_chat.activies.Admin.HomeAdminActivity;
+import hunre.it.app_bc_chat.activies.User.CartActivity;
 import hunre.it.app_bc_chat.activies.User.InfoActivity;
 import hunre.it.app_bc_chat.databinding.ActivityUserInfoBinding;
 import hunre.it.app_bc_chat.utilities.Constants;

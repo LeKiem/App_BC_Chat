@@ -43,7 +43,7 @@
             android:name=".activies.UserInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".activies.CartActivity"
+            android:name=".activies.User.CartActivity"
             android:exported="false" />
         <activity
             android:name=".activies.DetailActivity"
