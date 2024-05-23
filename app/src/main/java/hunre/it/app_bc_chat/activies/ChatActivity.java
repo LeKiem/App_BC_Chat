@@ -104,7 +104,7 @@ public class ChatActivity extends BaseActivity {
                 data.put(Constants.KEY_USER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
                 data.put(Constants.KEY_NAME, preferenceManager.getString(Constants.KEY_NAME));
                 data.put(Constants.KEY_FCM_TOKEN, preferenceManager.getString(Constants.KEY_FCM_TOKEN));
-                data.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
+                data.put(Constants.KEY_LAST_MESSAGE, binding.inputMessage.getText().toString());
 
                 JSONObject body = new JSONObject();
                 body.put(Constants.REMOTE_MSG_DATA, data);
@@ -161,7 +161,7 @@ public class ChatActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        showToast("Notification sent successfully");
+        showToast("Gửi thông báo thành công");
     }
 
     private void handleErrorResponse(Response<String> response) {

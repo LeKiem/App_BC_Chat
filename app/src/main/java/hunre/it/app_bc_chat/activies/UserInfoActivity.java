@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import hunre.it.app_bc_chat.activies.User.CartActivity;
 import hunre.it.app_bc_chat.activies.User.InfoActivity;
+import hunre.it.app_bc_chat.activies.User.OrderHistoryActivity;
 import hunre.it.app_bc_chat.databinding.ActivityUserInfoBinding;
 import hunre.it.app_bc_chat.utilities.Constants;
 import hunre.it.app_bc_chat.utilities.PreferenceManager;
@@ -36,7 +37,7 @@ public class UserInfoActivity extends BaseActivity1 {
         binding.BtnUser.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, UserInfoActivity.class)));
         binding.btnChat.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, ChatMainActivity.class)));
 
-        binding.btnCart.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, CartActivity.class)));
+        binding.btnCart.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, OrderHistoryActivity.class)));
         binding.btnInfo.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, InfoActivity.class)));
         binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.btnLogout.setOnClickListener(v -> signOut());

@@ -41,6 +41,7 @@ import hunre.it.app_bc_chat.adapters.PopularAdapter;
 import hunre.it.app_bc_chat.adapters.SliderAdapter;
 import hunre.it.app_bc_chat.adapters.User.AdapterTinTuc;
 import hunre.it.app_bc_chat.databinding.ActivityMainBinding;
+import hunre.it.app_bc_chat.models.User;
 import hunre.it.app_bc_chat.network.ApiClient;
 import hunre.it.app_bc_chat.network.ApiService;
 import hunre.it.app_bc_chat.utilities.Constants;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity1 {
     private PreferenceManager preferenceManager;
     private ActivityMainBinding binding;
     private FirebaseFirestore db;
+    private User recaiverUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,14 +182,13 @@ public class MainActivity extends BaseActivity1 {
         try {
             JSONObject data  = new JSONObject();
             data.put(Constants.KEY_USER_ID, "id");
-            data.put(Constants.KEY_NAME, "Name");
+            data.put(Constants.KEY_NAME, "Thông báo khẩn cấp");
+            data.put(Constants.KEY_LAST_MESSAGE, "Cảnh báo hiện tại chung cư đang có hỏa hoạn. Yêu cầu mọi người sơ tán khẩn cấp");
 //                data.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
 
             JSONObject body = new JSONObject();
             body.put("to", "/topics/noti");
             body.put(Constants.REMOTE_MSG_DATA, data);
-
-
             sendNotificationToAllUsers(body.toString());
 
         } catch (Exception e){
@@ -230,7 +231,7 @@ public class MainActivity extends BaseActivity1 {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        showToast("Notification sent successfully");
+        showToast("Gửi thông báo thành công đến các người dùng");
     }
     private void handleErrorResponse(Response<String> response) {
         System.out.println("1:"+response);

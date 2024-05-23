@@ -42,8 +42,8 @@ public class AdapterTinTucPage1 extends RecyclerView.Adapter<AdapterTinTucPage1.
     @Override
     public void onBindViewHolder(@NonNull AdapterTinTucPage1.Viewholder holder, int position) {
         TinTucDomain item = items.get(position);
-        holder.binding.desTxt.setText(item.getTenTT());
-        holder.binding.tenTxt.setText(item.getMoTa());
+//        holder.binding.desTxt.setText(item.getMoTa());
+        holder.binding.tenTxt.setText(item.getTenTT());
 
         RequestOptions requestOptions = new RequestOptions();
         requestOptions=requestOptions.transform(new CenterCrop());

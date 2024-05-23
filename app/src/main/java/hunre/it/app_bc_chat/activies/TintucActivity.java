@@ -54,6 +54,7 @@ public class TintucActivity extends BaseActivity1 {
                     if (!news.isEmpty()) {
                         binding.recyclerViewNew.setLayoutManager(new GridLayoutManager(TintucActivity.this,1));
                         binding.recyclerViewNew.setAdapter(new AdapterTinTucPage1(news));
+
                     }
                     binding.progressBarNew.setVisibility(View.GONE);
                 }

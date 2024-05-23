@@ -64,6 +64,7 @@ public class ChatMainActivity extends BaseActivity implements ConversionListener
         getToken();
         setListeners();
         listenConversations();
+        binding.btn1.setOnClickListener(v -> sendMessage());
     }
     private  void init() {
         conversations = new ArrayList<>();
@@ -83,7 +84,18 @@ public class ChatMainActivity extends BaseActivity implements ConversionListener
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.imageProfile.setImageBitmap(bitmap);
     }
-
+    private void sendMessage(){
+//        FirebaseMessaging.getInstance().subscribeToTopic("all");
+        FirebaseMessaging.getInstance().subscribeToTopic("noti")
+                .addOnCompleteListener(task -> {
+                    String msg = "Subscribed noti";
+                    if (!task.isSuccessful()) {
+                        msg = "Subscribe failed";
+                    }
+//                        Log.d(Tag, msg);
+                    Toast.makeText(ChatMainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                });
+    }
     private  void showToast (String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
