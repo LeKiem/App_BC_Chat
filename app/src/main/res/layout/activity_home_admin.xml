@@ -9,7 +9,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="90dp"
+        android:paddingTop="@dimen/_10sdp"
         android:layout_alignParentTop="true"
         android:background="@color/primary">
 
@@ -36,7 +37,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="3dp"
-                android:text="Admin | SĐT"
+                android:text="Admin"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/sdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@+id/textName"
+                android:text="sdt"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

@@ -101,7 +101,7 @@ public class CapNhatTtUser extends AppCompatActivity {
 
         // Validate input
         if (TextUtils.isEmpty(name)) {
-            binding.editTextName.setError("Please enter name");
+            binding.editTextName.setError("Vui lòng điền tên");
             binding.editTextName.requestFocus();
             return;
         }

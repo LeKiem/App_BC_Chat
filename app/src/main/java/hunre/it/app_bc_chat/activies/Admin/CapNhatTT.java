@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import hunre.it.app_bc_chat.R;
+import hunre.it.app_bc_chat.activies.ChatMainActivity;
 import hunre.it.app_bc_chat.databinding.ActivityCapNhatSpBinding;
 import hunre.it.app_bc_chat.databinding.ActivityCapNhatTtBinding;
 import hunre.it.app_bc_chat.databinding.ActivityTintucBinding;
@@ -145,7 +146,7 @@ public class CapNhatTT extends AppCompatActivity {
                             progressDialog.dismiss();
                             new AlertDialog.Builder(getApplicationContext(), R.style.CustomAlertDialog)
                                     .setMessage("Cập nhật thành công")
-                                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                                    .setPositiveButton("ok", (dialogInterface, i) -> {
                                         onBackPressed();
                                         super.finish();
                                     }).show();
@@ -164,6 +165,16 @@ public class CapNhatTT extends AppCompatActivity {
                     .setPositiveButton("OK", null).show();
         });
     }
+//    private void confirmExit() {
+//        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ChatMainActivity.this);
+//        builder.setTitle("Xác nhận đăng xuất");
+//        builder.setMessage("Bạn có muốn thoát khỏi chương trình không?");
+//        builder.setPositiveButton("Có", (dialogInterface, i) -> signOut());
+//        builder.setNegativeButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
+//
+//        androidx.appcompat.app.AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
     private String tenTt, moTa;
 
     private void checkData() {

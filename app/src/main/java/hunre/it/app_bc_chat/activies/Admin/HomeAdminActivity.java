@@ -125,6 +125,7 @@ public class HomeAdminActivity extends AppCompatActivity {
 
     private  void loadUserDetails(){
         binding.textName.setText(preferenceManager.getString(Constants.KEY_NAME));
+        binding.sdt.setText(preferenceManager.getString(Constants.SDT));
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.imageProfile.setImageBitmap(bitmap);
