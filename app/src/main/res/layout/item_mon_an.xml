@@ -12,7 +12,7 @@
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:src="@drawable/img_test"
+            android:src="@drawable/item_prodcut1"
             android:scaleType="centerCrop"
             android:id="@+id/hinhAnh"/>
 

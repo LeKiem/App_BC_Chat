@@ -85,8 +85,8 @@ public class AdapterSanPham extends RecyclerView.Adapter<AdapterSanPham.HolderSa
         // set
         holder.title.setText(title);
         Picasso.get().load(picUrl).fit().centerCrop()
-                .placeholder(R.drawable.img_test)
-                .error(R.drawable.img_test)
+                .placeholder(R.drawable.item_prodcut1)
+                .error(R.drawable.item_prodcut1)
                 .into(holder.picUrl);
         holder.tiLe.setText("Giảm " + tile + "%");
         holder.giaGoc.setText(gia_goc + "đ");

@@ -14,7 +14,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_item_new_1" />
+                    android:src="@drawable/item_tt_2" />
 
                 <LinearLayout
                     android:id="@+id/thaoTac"

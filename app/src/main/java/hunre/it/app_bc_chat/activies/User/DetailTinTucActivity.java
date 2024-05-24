@@ -66,10 +66,10 @@ public class DetailTinTucActivity extends AppCompatActivity {
             bundle1.putString("moTa", object.getMoTa());
         }
         tab1.setArguments(bundle1);
-        adapter.addFrag(tab1, "Thông tin bài viết");
+        adapter.addFrag(tab1, "");
 
         binding.viewpage.setAdapter(adapter);
-        binding.tabLayout.setupWithViewPager(binding.viewpage);
+//        binding.tabLayout.setupWithViewPager(binding.viewpage);
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {

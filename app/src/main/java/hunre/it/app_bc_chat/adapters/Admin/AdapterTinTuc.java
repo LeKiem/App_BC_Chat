@@ -79,8 +79,8 @@ public class AdapterTinTuc  extends RecyclerView.Adapter<AdapterTinTuc.HolderTin
         // set
         holder.tenTT.setText(tenTT);
         Picasso.get().load(hinhAnh).fit().centerCrop()
-                .placeholder(R.drawable.img_test)
-                .error(R.drawable.img_test)
+                .placeholder(R.drawable.item_tt_2)
+                .error(R.drawable.item_tt_2)
                 .into(holder.hinhAnh);
 //        holder.moTa.setText(moTa);
 
@@ -188,8 +188,8 @@ public class AdapterTinTuc  extends RecyclerView.Adapter<AdapterTinTuc.HolderTin
         String moTaTt = tinTuc.getMoTa();
 
         Picasso.get().load(anhTt).fit().centerCrop()
-                .placeholder(R.drawable.img_item_new_1)
-                .error(R.drawable.img_item_new_1)
+                .placeholder(R.drawable.item_tt_2)
+                .error(R.drawable.item_tt_2)
                 .into(hinhAnh);
         tenTT.setText(ten);
         if(tenTT == null){

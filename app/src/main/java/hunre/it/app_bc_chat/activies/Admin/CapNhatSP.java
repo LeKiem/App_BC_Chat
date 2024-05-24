@@ -90,8 +90,8 @@ public class CapNhatSP extends AppCompatActivity {
                 String giaGiam = "" + snapshot.child("giaGiam").getValue();
                 String tiLe = "" + snapshot.child("tiLeGiam").getValue();
                 Picasso.get().load(hinhAnh).fit().centerCrop()
-                        .placeholder(R.drawable.shopivhd)
-                        .error(R.drawable.shopivhd)
+                        .placeholder(R.drawable.item_prodcut1)
+                        .error(R.drawable.item_prodcut1)
                         .into(binding.hinhAnh);
                 binding.tenSP.setText(tenSp);
                 binding.giaCa.setText(giaGoc);

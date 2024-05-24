@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_item_new_1"
+        android:src="@drawable/item_tt_2"
         app:riv_corner_radius="10dp" />
     <EditText
         android:id="@+id/tenTt"
@@ -33,7 +33,7 @@
         android:layout_marginBottom="10dp"
         android:drawableTint="@color/colorGray02"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         android:layout_below="@id/tenTt"
         android:hint="Mô tả"
         android:inputType="textCapSentences|textMultiLine"

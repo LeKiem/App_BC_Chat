@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/qlttb"
-        android:icon="@drawable/round_fastfood_24"
+        android:icon="@drawable/item4"
         android:title="Quản lí trang thiết bị"
         app:cnb_backgroundColor="#4DC2185B"
         app:cnb_iconColor="#C2185B"

@@ -106,10 +106,10 @@
 <!--                    android:layout_height="600dp"-->
 <!--                    android:background="@color/white" />-->
                 <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/container"
                     android:layout_width="match_parent"
                     android:layout_height="600dp"
-                    android:background="@color/white"
-                    android:id="@+id/container"/>
+                    android:background="@color/white" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

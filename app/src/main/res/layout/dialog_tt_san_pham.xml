@@ -11,7 +11,7 @@
                     android:layout_marginBottom="10dp"
                     android:scaleType="centerCrop"
                     android:id="@+id/hinhAnh"
-                    android:src="@drawable/img_test"
+                    android:src="@drawable/item_prodcut1"
                     android:layout_centerHorizontal="true"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"/>
@@ -164,19 +164,19 @@
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:id="@+id/themVaoGio"-->
 <!--                    android:text="Thêm vào giỏ hàng" />-->
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnCheckout"
-                    style="@android:style/Widget.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_below="@id/linear02"
-                    android:background="@drawable/green_btn_bg"
-                    android:text="Thanh toán"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btnCheckout"-->
+<!--                    style="@android:style/Widget.Button"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:layout_below="@id/linear02"-->
+<!--                    android:background="@drawable/green_btn_bg"-->
+<!--                    android:text="Thanh toán"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="22dp"-->
+<!--                    android:textStyle="bold" />-->
 
         </RelativeLayout>
 

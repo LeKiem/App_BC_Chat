@@ -78,8 +78,8 @@ public class CapNhatTT extends AppCompatActivity {
                 String tenTt = "" + snapshot.child("tenTT").getValue();
                 String moTa = "" + snapshot.child("moTa").getValue();
                 Picasso.get().load(hinhAnh).fit().centerCrop()
-                        .placeholder(R.drawable.shopivhd)
-                        .error(R.drawable.shopivhd)
+                        .placeholder(R.drawable.item_tt_2)
+                        .error(R.drawable.item_tt_2)
                         .into(binding.hinhAnh);
                 binding.tenTt.setText(tenTt);
                 binding.moTa.setText(moTa);

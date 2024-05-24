@@ -6,10 +6,10 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/hinhTT"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="20dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_item_new_1" />
+        android:src="@drawable/item_tt_2" />
    <RelativeLayout
        android:layout_width="wrap_content"
        android:padding="10dp"
@@ -31,7 +31,7 @@
            android:gravity="top|start"
            android:drawableTint="@color/colorGray02"
            android:layout_width="match_parent"
-           android:layout_height="100dp"
+           android:layout_height="300dp"
            android:layout_marginBottom="10dp"
            android:layout_below="@id/tenTT"
            android:hint="Mô tả"
