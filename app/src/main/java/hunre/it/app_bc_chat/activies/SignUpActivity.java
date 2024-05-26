@@ -67,15 +67,16 @@ public class SignUpActivity extends AppCompatActivity {
     }
     private  void signUp() {
         loading( true);
+        final String timestamp = "" + System.currentTimeMillis();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
         HashMap<String, Object> user = new HashMap<>();
         user.put(Constants.KEY_NAME , binding.inputName.getText().toString());
         user.put(Constants.KEY_EMAIL , binding.inputEmail.getText().toString());
         user.put(Constants.SDT , binding.sDT.getText().toString());
-        user.put(Constants.Tinh , binding.inputPassword.getText().toString());
-        user.put(Constants.Huyen , binding.inputPassword.getText().toString());
-        user.put(Constants.DiaChi , binding.inputPassword.getText().toString());
+        user.put(Constants.Tinh , binding.tinhTP.getText().toString());
+        user.put(Constants.Huyen , binding.quanHuyen.getText().toString());
+        user.put(Constants.DiaChi , binding.diaChi.getText().toString());
         user.put(Constants.KEY_PASSWORD , binding.inputPassword.getText().toString());
         user.put(Constants.KEY_IMAGE , encodedImage);
         user.put(Constants.TaiKhoan, "KhachHang");
@@ -96,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
                     loading(false);
                     showToast(e.getMessage());
                 });
-        reference
+        reference.child(timestamp)
                 .setValue(user)
                 .addOnSuccessListener(unused -> {
                     loading(false);

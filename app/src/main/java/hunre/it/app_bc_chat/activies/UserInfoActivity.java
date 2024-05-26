@@ -28,11 +28,13 @@ public class UserInfoActivity extends BaseActivity1 {
         super.onCreate(savedInstanceState);
         binding = ActivityUserInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        preferenceManager = new PreferenceManager(getApplicationContext());
         bottomNavigate();
     }
+
     private void bottomNavigate() {
-        binding.tintucBtn.setOnClickListener(v -> startActivity(new Intent( UserInfoActivity.this, TintucActivity.class)));
-        binding.homeBtn.setOnClickListener(v -> startActivity(new Intent( UserInfoActivity.this, MainActivity.class)));
+        binding.tintucBtn.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, TintucActivity.class)));
+        binding.homeBtn.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, MainActivity.class)));
         binding.KNBtn.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, KNActivity.class)));
         binding.BtnUser.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, UserInfoActivity.class)));
         binding.btnChat.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, ChatMainActivity.class)));
@@ -40,7 +42,7 @@ public class UserInfoActivity extends BaseActivity1 {
         binding.btnCart.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, OrderHistoryActivity.class)));
         binding.btnInfo.setOnClickListener(v -> startActivity(new Intent(UserInfoActivity.this, InfoActivity.class)));
         binding.btnBack.setOnClickListener(v -> onBackPressed());
-        binding.btnLogout.setOnClickListener(v -> signOut());
+        binding.btnLogout.setOnClickListener(v -> confirmExit());
     }
 
     private void confirmExit() {
@@ -49,21 +51,21 @@ public class UserInfoActivity extends BaseActivity1 {
         builder.setMessage("Bạn có muốn thoát khỏi chương trình không?");
 
         builder.setPositiveButton("Có", (dialogInterface, i) -> signOut());
-
         builder.setNegativeButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
 
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    private void  signOut() {
-        showToast("Đang đăng xuất...");
+
+    private void signOut() {
+        showToast("Đăng xuất thành công...");
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference =
-                database.collection(Constants.KEY_COLLECTION_USERS).document(
-                        preferenceManager.getString(Constants.KEY_USER_ID)
-                );
-        HashMap<String , Object> updates = new HashMap<>();
+        DocumentReference documentReference = database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(preferenceManager.getString(Constants.KEY_USER_ID));
+
+        HashMap<String, Object> updates = new HashMap<>();
         updates.put(Constants.KEY_FCM_TOKEN, FieldValue.delete());
+
         documentReference.update(updates)
                 .addOnSuccessListener(unused -> {
                     preferenceManager.clear();
@@ -72,7 +74,8 @@ public class UserInfoActivity extends BaseActivity1 {
                 })
                 .addOnFailureListener(e -> showToast("Đăng xuất thất bại"));
     }
-    private  void showToast (String message){
+
+    private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -130,10 +130,6 @@ public class AdapterTinTuc  extends RecyclerView.Adapter<AdapterTinTuc.HolderTin
 
                     }
                 });
-        // set hình ảnh quán ăn
-        // 1. truy vấn id của món ăn (mỗi id món ăn là 1 bản ghi (hàng) trong csdl).
-        // 2. lấy uid từ bảng món ăn và mang đi truy vấn đến bảng users
-        // 3. hiển thị dữ liệu (chỉ khi uid quán ăn của bảng sản phẩm giống với uid của bảng users)
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("TinTuc");
         reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -196,7 +192,7 @@ public class AdapterTinTuc  extends RecyclerView.Adapter<AdapterTinTuc.HolderTin
             System.out.println("Errrrrr");
         }
         else {
-            System.out.println("KOOO LOOOOi");
+//            System.out.println("KOOO LOOOOi");
         }
         moTa.setText(moTaTt);
 

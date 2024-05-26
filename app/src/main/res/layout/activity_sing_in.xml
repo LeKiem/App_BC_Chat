@@ -17,8 +17,8 @@
         >
 
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/gif"
             android:src="@drawable/passion"
             android:layout_centerHorizontal="true" />
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/welcome_back"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_18ssp"
@@ -70,31 +70,28 @@
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_13ssp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_12ssp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="@dimen/_12ssp"-->
+<!--            android:layout_marginEnd="@dimen/_12sdp"-->
+<!--            android:layout_marginTop="@dimen/_16sdp"-->
+<!--            android:orientation="horizontal">-->
 
-            <ImageView
-                android:id="@+id/imgFace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/facebook" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imgFace"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                app:srcCompat="@drawable/facebook" />-->
 
-            <ImageView
-                android:id="@+id/imgGoogle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                app:srcCompat="@drawable/google" />
-
-
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/imgGoogle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                app:srcCompat="@drawable/google" />-->
+<!--        </LinearLayout>-->
 
         <FrameLayout
             android:layout_width="match_parent"
